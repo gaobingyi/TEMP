@@ -1,6 +1,24 @@
 public class Sort {
 
 	/*
+	 * Bubble Sort
+	 */
+	public static void bubbleSort(int[] array) {
+		for (int i = 0; i < array.length - 1; i++) {
+			boolean flag = true;
+			for (int j = 0; j < array.length - 1 - i; j++) {
+				if (array[j] > array[j+1]) {
+					swap(array, j, j+1);
+					flag = false;
+				}
+			}
+			if (flag) {
+				break;
+			}
+		}
+	}
+	
+	/*
 	 * Select Sort
 	 */
 	public static void selectSort(int[] array) {
@@ -123,11 +141,12 @@ public class Sort {
 					nums[k+gap] = temp;
 				}
 			}
+			
 		}
 	}
 	
 	/*
-	 * heapSort
+	 * Heap Sort
 	 */
 	public static void heapSort(int[] nums) {
 		int length = nums.length;
@@ -145,7 +164,6 @@ public class Sort {
 			heapAdjust(nums, 0, i-1);
 		}
 	}
-	
 	private static void heapAdjust(int[] nums, int i, int size) {
 		int left = 2 * i;
 		int right = 2 * i + 1;
