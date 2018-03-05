@@ -29,26 +29,5 @@ public class Main7 {
 	        		System.out.println(matrix[j][k]);
         	}                        
         }
-	}
-	
-	public static int foo2(int[] arr) {
-		Arrays.sort(arr);	
-		return arr[(arr.length - 1) / 2 + 1];
-	}
-	
-	public static void foo4(int[] arr, int n) {
-		int low = 0;
-		int high = arr.length - 1;
-		while (low < high) {
-			if (arr[low] + arr[high] < n) {
-				low++;
-			} else if (arr[low] + arr[high] > n) {
-				high--;
-			} else {
-				System.out.println(arr[low] + " " + arr[high]);
-				break;
-			}
-		}
-	}
 
 }
