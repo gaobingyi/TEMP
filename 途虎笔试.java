@@ -28,16 +28,16 @@ public class Solution {
 	}
 	
 	public static int numOfSheep2(int n) {
-        int num = 1; // the initial sheep number
-        for (int i = 1; i <= n; i++){
-            if (i == 2) {
-                num += numOfSheep2(n - 2);
-            } else if (i == 4){
-                num += numOfSheep2(n - 4);
-            } else if (i==5){
-                num--;
-            }
-        }
-        return num;
-    }
+		int num = 1; // the initial sheep number
+		for (int i = 1; i <= n; i++){
+		    if (i == 2) {
+			num += numOfSheep2(n - 2);
+		    } else if (i == 4){
+			num += numOfSheep2(n - 4);
+		    } else if (i==5){
+			num--;
+		    }
+		}
+		return num;
+	}
 }
