@@ -34,7 +34,7 @@ public class Solution {
 			num += numOfSheep2(n - 2);
 		    } else if (i == 4){
 			num += numOfSheep2(n - 4);
-		    } else if (i==5){
+		    } else if (i == 5){
 			num--;
 		    }
 		}
