@@ -95,32 +95,38 @@ public class Sort {
 	/*
 	 * Merge Sort
 	 */
-	public static void mergeSort(int[] nums) {
+	public void mergeSort(int[] nums) {
 		mergeSort(nums, 0, nums.length - 1);
 	}
-	private static void mergeSort(int[] nums, int begin, int end) {
-		if (begin < end) {
-			int mid = (begin + end) / 2;
-			mergeSort(nums, begin, mid);
-			mergeSort(nums, mid+1, end);
-			merge(nums, begin, mid, end);
+
+	private void mergeSort(int[] nums, int l, int r) {
+		if (l >= r) {
+			return;
+		}
+		int m = l + (r - l) / 2;
+		mergeSort(nums, 0, m);
+		mergeSort(nums, m + 1, r);
+		merge(nums, r, l, m);
+	}
+
+	private void merge(int[] nums, int r, int l, int m) {
+		int[] arr = new int[r - l + 1];
+		int i = l;
+		int j = m + 1;
+		int k = 0;
+		while (i <= l && j <= r) {
+			arr[k++] = nums[i] <= nums[j] ? nums[i++] : nums[j++];
+		}
+		while (i <= l) {
+			arr[k++] = nums[i++];
+		}
+		while (j <= r) {
+			arr[k++] = nums[j++];
+		}
+		for (i = 0; i < k; i++) {
+			nums[l + i] = arr[i];
 		}
 	}
-	private static void merge(int[] nums, int begin, int mid, int end) {
-		int[] temp = new int[nums.length];
-		int i = begin;
-		int j = mid + 1;
-		int k = 0;
-		while(i <= mid && j <= end)
-			temp[k++] = (nums[i] < nums[j]) ? nums[i++] : nums[j++];
-		while (i <= mid)
-			temp[k++] = nums[i++];
-		while (j <= end)
-			temp[k++] = nums[j++];
-		for (i = 0; i < k; i++)
-			nums[begin+i] = temp[i];
-	}
-	
 	
 	/*
 	 * Shell Sort
