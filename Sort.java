@@ -65,31 +65,34 @@ public class Sort {
 	/*
 	 * Quick Sort
 	 */
-	public static void quickSort(int[] array) {
-		quickSort(array, 0, array.length - 1);
-	}
-	
-	private static void quickSort(int[] array, int low, int high) {
-		if (low < high) {
-			int index = partition(array, low, high);
-			quickSort(array, low, index-1);
-			quickSort(array, index+1, high);
-		}
+	public void quickSort(int[] nums) {
+		quickSort(nums, 0, nums.length - 1);
+		
 	}
 
-	private static int partition(int[] array, int low, int high) {
-		int pivot = array[low]; // select the first element as pivot
-		while (low < high) {
-			while (low < high && array[high] >= pivot)
-				high--;
-			array[low] = array[high];
-			while (low < high && array[low] <= pivot)
-				low++;
-			array[high] = array[low];
+	private void quickSort(int[] nums, int l, int r) {
+		if (l >= r) {
+			return;
 		}
-		// now low is equal to high
-		array[low] = pivot;
-		return low;
+		int i = patition(nums, l, r);
+		quickSort(nums, l, i - 1);
+		quickSort(nums, i + 1, r);
+	}
+
+	private int patition(int[] nums, int l, int r) {
+		int privot = nums[l];
+		while (l < r) {
+			while (l < r && nums[r] >= privot) {
+				r--;
+			}
+			nums[l] = nums[r];
+			while (l < r && nums[l] <= privot) {
+				l++;
+			}
+			nums[r] = nums[l];
+		}
+		nums[l] = privot;
+		return l;
 	}
 	
 	/*
