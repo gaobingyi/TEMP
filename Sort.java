@@ -67,32 +67,28 @@ public class Sort {
 	 */
 	public void quickSort(int[] nums) {
 		quickSort(nums, 0, nums.length - 1);
-		
 	}
 
-	private void quickSort(int[] nums, int l, int r) {
-		if (l >= r) {
+	private void quickSort(int[] nums, int left, int right) {
+		if (left >= right)
 			return;
-		}
-		int i = patition(nums, l, r);
-		quickSort(nums, l, i - 1);
-		quickSort(nums, i + 1, r);
+		int index = partition(nums, left, right);
+		quickSort(nums, left, index - 1);
+		quickSort(nums, index + 1, right);
 	}
 
-	private int patition(int[] nums, int l, int r) {
-		int privot = nums[l];
-		while (l < r) {
-			while (l < r && nums[r] >= privot) {
-				r--;
-			}
-			nums[l] = nums[r];
-			while (l < r && nums[l] <= privot) {
-				l++;
-			}
-			nums[r] = nums[l];
+	private int partition(int[] nums, int left, int right) {
+		int pivot = nums[left];
+		while (left < right) {
+			while (nums[right] >= pivot && left < right)
+				right--;
+			nums[left] = nums[right];
+			while (nums[left] <= pivot && left < right)
+				left++;
+			nums[right] = nums[left];
 		}
-		nums[l] = privot;
-		return l;
+		nums[left] = pivot;
+		return left;
 	}
 	
 	/*
